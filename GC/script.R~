@@ -17,7 +17,7 @@ GCcontent <- function (fichier) {
 		gccontent <- c(gccontent,100*(compteur/length(read)))
 		
 	}
-	dataframe=cbind(dataframe,gccontent)
+#	dataframe=cbind(dataframe,(gccontent/length(read))*100)
 	names(dataframe)[2]='gccontent'
 	
 	return(dataframe[dataframe$gccontent==max(dataframe$gccontent),])
