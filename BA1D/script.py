@@ -5,12 +5,13 @@ def main(fichier):
 	f = open(fichier,'r')
 	s = f.readline().strip()
 	t = f.readline().strip()
-	
+	g = open('output.txt','w')
 	position = 0
-	location = s.find(t,position)
+	location = t.find(s,position)
 	while location!=-1:
-		print(str(location+1))
+		g.write(str(location)+' ')
 		position = location+1
-		location = s.find(t,position)
-		
+		location = t.find(s,position)
+	f.close()
+	g.close()		
 	
