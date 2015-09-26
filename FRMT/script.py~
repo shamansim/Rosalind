@@ -1,0 +1,22 @@
+def main(fichier):
+	"""
+	"""
+	from Bio import Entrez
+	from Bio import SeqIO
+	Entrez.email = "simon@besson-girard.fr"
+	f = open(fichier,'r')
+	fline = f.readline().strip()
+	l = fline.split(' ')
+	for i in range(len(l)):
+		handle = Entrez.efetch(db="nucleotide", id=[l[i]], rettype="fasta")
+		if 'records' in locals():
+			records.append(SeqIO.parse(handle, "fasta"))
+		else:
+			records = list (SeqIO.parse(handle, "fasta"))
+	
+	compteur = 0
+	for j in range(len(records)):
+		if len(records[j].seq)<=len(records[compteur].seq):
+			compteur = j
+
+	print(records[compteur].format("fasta"))
